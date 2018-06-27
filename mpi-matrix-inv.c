@@ -87,15 +87,17 @@ void print_matrix(double *matrix, MKL_INT size) {
 }
 
 void invert_submatrix(double *values, MKL_INT *row_ind, MKL_INT *col_ptr,
-                      double *values_inv, int i) {
+                      double *values_inv, int i, double *locDurBuild, double *locDurCalc) {
 
   MKL_INT nnz, k, l, kcal, lcal, idx;
   lapack_int ret;
   double *submatrix;
+  double tStart, tEnd;
 
   nnz = col_ptr[i+1] - col_ptr[i];
   submatrix = (double*) mkl_calloc(nnz*nnz, sizeof(double), 64);
 
+  tStart = omp_get_wtime();
   for (k = 0; k < nnz; k++) {
     for (l = 0; l < nnz; l++) {
       kcal = row_ind[col_ptr[i]+k];
@@ -109,15 +111,23 @@ void invert_submatrix(double *values, MKL_INT *row_ind, MKL_INT *col_ptr,
       }
     }
   }
+  tEnd = omp_get_wtime();
+  *locDurBuild = (tEnd - tStart);
 
+  tStart = omp_get_wtime();
   ret = invert_matrix(submatrix, nnz);
+  tEnd = omp_get_wtime();
+  *locDurCalc = (tEnd - tStart);
   if (ret) {
     fprintf(stderr, "Inverting submatrix failed\n");
   }
 
+//  tStart = omp_get_wtime();
   memcpy(values_inv,
          &(submatrix[find_elem(i, &(row_ind[col_ptr[i]]), nnz) * nnz]),
          nnz*sizeof(double));
+//  tEnd = omp_get_wtime();
+//  *locDurBuild += (tEnd - tStart);
 
   mkl_free(submatrix);
 }
@@ -385,22 +395,31 @@ int main(int argc, char* argv[]) {
              "thread(s) to MKL for each submatrix operation.\n", world_rank,
              omp_get_max_threads(), submatrices_for_me, mkl_threads);
 
+      double durationBuild = .0;
+      double durationCalc = .0;
       tStart = MPI_Wtime();
       // printf("%d: Starting the number crunching\n", world_rank);
-      #pragma omp parallel for schedule(dynamic)
+      #pragma omp parallel for schedule(dynamic) reduction(+:durationBuild,durationCalc)
       for (i = 0; i < submatrices_for_me; i++) {
+        double locDurBuild, locDurCalc;
         // printf("%d: Inverting submatrix %d in thread %d.\n", world_rank,
         //        (world_rank-1)*submatrices_for_me + i, omp_get_thread_num());
         invert_submatrix(values, row_ind, col_ptr,
           &(values_inv[
             col_ptr[my_first_col + i] -
             col_ptr[my_first_col]
-          ]), my_first_col + i);
+          ]), my_first_col + i, &locDurBuild, &locDurCalc);
+        durationBuild += locDurBuild;
+        durationCalc += locDurCalc;
       }
       tEnd = MPI_Wtime();
 
       printf("%d: Wall time elapsed: %dms\n", world_rank,
             (int)((tEnd-tStart)*1000));
+      printf("%d: CPU time sm build: %dms\n", world_rank,
+            (int)(durationBuild*1000));
+      printf("%d: CPU time sm calc: %dms\n", world_rank,
+            (int)(durationCalc*1000));
 
 
       // printf("%d: Send results to root\n", world_rank);

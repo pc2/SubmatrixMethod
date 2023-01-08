@@ -45,7 +45,7 @@ In Julia:
 ```julia
 include("matrix_io.jl");
 S = sprandsymposdef(1000, 1e-6, 2);
-write_matrix_three_files("sprandsym_s1000_d1_c2_n1", S); # produces three files *.cp, *.ri, and *.val
+write_matrix_three_files("sprandsym-s1000-d1-c2-n1", S); # produces three files *.cp, *.ri, and *.val
 ```
 
 In Bash:

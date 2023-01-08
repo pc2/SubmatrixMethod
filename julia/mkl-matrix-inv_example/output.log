@@ -1,0 +1,3 @@
+Reading input matrix took 0.029s
+Doing a precise inversion took 0.182s
+Writing result matrix took 0.223s

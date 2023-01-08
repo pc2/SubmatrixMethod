@@ -1,5 +1,6 @@
 CC=mpiicc
-CFLAGS=-O2 -Wall -qopenmp -mkl -mt_mpi
+CFLAGS=-O2 -Wall -qopenmp -qmkl -mt_mpi
+# CFLAGS=-g -O0 -Wall -qopenmp -qmkl -mt_mpi
 LDFLAGS=$(CFLAGS)
 
 BINARIES = mpi-matrix-inv matlab-to-csc csc-to-matlab mkl-matrix-inv

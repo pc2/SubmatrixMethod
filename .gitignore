@@ -1,2 +1,7 @@
 .DS_Store
 .vscode
+*.o
+csc-to-matlab
+matlab-to-csc
+mkl-matrix-inv
+mpi-matrix-inv

@@ -10,11 +10,16 @@ function read_matrix_three_files(
     fname_prefix::AbstractString,
     Tv::DataType=Float64,
     Ti::DataType=Int64;
-    mmap=false
+    mmap=false,
+    outval=false,
 )
     fcolptr = fname_prefix * ".cp"
     frowval = fname_prefix * ".ri"
-    fnzval = fname_prefix * ".val"
+    if outval
+        fnzval = fname_prefix * ".out.val"
+    else
+        fnzval = fname_prefix * ".val"
+    end
     _read_vector(fname, T) = read!(fname, Vector{T}(undef, filesize(fname) ÷ sizeof(T)))
     if !mmap
         colptr = _read_vector(fcolptr, Ti)

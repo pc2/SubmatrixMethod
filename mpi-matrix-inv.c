@@ -194,7 +194,7 @@ int main(int argc, char* argv[]) {
     int evalRep, evalChoice;
     
     for (evalRep = 0; evalRep < 5; evalRep++) {
-      for (evalChoice = 3; evalChoice > 0; evalChoice--) {
+      for (evalChoice = 1; evalChoice > 0; evalChoice--) {
 
         snprintf(fn_in_cp, PATHLEN, "sprandsym-s%d-d%d-c%d-n%d.cp", prop.size,
                  prop.density, prop.condition, evalChoice);
@@ -203,6 +203,8 @@ int main(int argc, char* argv[]) {
         snprintf(fn_in_val, PATHLEN, "sprandsym-s%d-d%d-c%d-n%d.val", prop.size,
                  prop.density, prop.condition, evalChoice);
         snprintf(fn_in_ri, PATHLEN, "sprandsym-s%d-d%d-c%d-n%d.ri", prop.size,
+                 prop.density, prop.condition, evalChoice);
+        snprintf(fn_out_val, PATHLEN, "sprandsym-s%d-d%d-c%d-n%d.out.val", prop.size,
                  prop.density, prop.condition, evalChoice);
 
 
@@ -273,7 +275,10 @@ int main(int argc, char* argv[]) {
         printf("%d: Wall time elapsed for Gatherv: %dms\n", world_rank,
                (int)((tEnd-tStart)*1000));
        
-             
+        fp = fopen(fn_out_val, "wb");
+        fwrite(values_inv, sizeof(double), total_nnz, fp);
+        fclose(fp);
+        
         free(row_ind);
         free(values);
         free(recvcounts);

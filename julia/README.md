@@ -37,6 +37,7 @@ Performs a matrix inversion using the submatrix method. Uses MPI for distributed
 * `d1` indicates the density in units of the number of elements of the matrix (`s1000` and `d1` together mean `1/(1000 * 1000) = 1e-6`)
 * `c2` indicates the condition number
 * `n1` is an important "repetition index" (just always use `n1`)
+Note that it expects the indices (row indices in `.ri` and col pointers in `.cp` to be `Int32`)!
 
 **Full example:**
 (Assuming that we're currently in the directory `matrix-io-julia`)
@@ -45,20 +46,21 @@ In Julia:
 ```julia
 include("matrix_io.jl");
 S = sprandsymposdef(1000, 1e-6, 2);
-write_matrix_three_files("sprandsym-s1000-d1-c2-n1", S); # produces three files *.cp, *.ri, and *.val
+# produce three files *.cp, *.ri, and *.val. Value type is Float64. Index type is Int32
+write_matrix_three_files("sprandsym-s1000-d1-c2-n1", S, Float64, Int32); 
 ```
 
 In Bash:
 ```
-mpiexec -n 2 ../mpi-matrix-inv 1000 input_matrix output_matrix.txt > output.log
+mpiexec -n 5 ../mpi-matrix-inv 1000 1 2 > output.log
 ```
 
-The file `output.log` contains the printed output (e.g. timings). The file output_matrix.txt is a sparse matrix which can be read by `read_matrix_txt`
+The file `output.log` contains the printed output (e.g. timings). The file `sprandsym-s1000-d1-c2-n1.out.val` contains the values of the inverse matrix (the indices are the same as before).
 
 In Julia:
 ```julia
 include("matrix_io.jl");
-A = read_matrix_txt("input_matrix");
-Ainv = read_matrix_txt("output_matrix");
-maximum(abs, inv(Matrix(A)) .- Ainv) # gave ~1e-10 when writing this but will vary
+A = read_matrix_three_files("sprandsym-s1000-d1-c2-n1", Float64, Int32);
+Ainv = read_matrix_three_files("sprandsym-s1000-d1-c2-n1", Float64, Int32; outval=true); # outval=true reads `.out.val` instead of `.val` file
+maximum(abs, Ainv .- inv(Matrix(A))) # gave 0.0 when writing this
 ```

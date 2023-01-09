@@ -1,0 +1,143 @@
+0: Each of the 4 workers will solve 250 submatrices.
+1: Waiting for matrix properties...
+2: Waiting for matrix properties...
+3: Waiting for matrix properties...
+4: Waiting for matrix properties...
+0: Wall time elapsed for Bcast: 0ms
+1: ... received
+2: ... received
+4: ... received
+3: ... received
+4: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+2: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+3: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+1: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+3: Wall time elapsed: 57ms
+3: CPU time sm build: 0ms
+3: CPU time sm calc: 1717ms
+1: Wall time elapsed: 74ms
+1: CPU time sm build: 0ms
+1: CPU time sm calc: 246ms
+1: Waiting for matrix properties...
+2: Wall time elapsed: 92ms
+2: CPU time sm build: 0ms
+2: CPU time sm calc: 282ms
+2: Waiting for matrix properties...
+3: Waiting for matrix properties...
+4: Wall time elapsed: 158ms
+4: CPU time sm build: 0ms
+4: CPU time sm calc: 4687ms
+0: Wall time elapsed for Gatherv: 170ms
+4: Waiting for matrix properties...
+0: Wall time elapsed for Bcast: 0ms
+4: ... received
+4: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+1: ... received
+1: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+1: Wall time elapsed: 0ms
+1: CPU time sm build: 0ms
+1: CPU time sm calc: 0ms
+1: Waiting for matrix properties...
+4: Wall time elapsed: 15ms
+4: CPU time sm build: 0ms
+4: CPU time sm calc: 0ms
+4: Waiting for matrix properties...
+3: ... received
+3: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+3: Wall time elapsed: 1ms
+3: CPU time sm build: 0ms
+3: CPU time sm calc: 0ms
+2: ... received
+2: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+2: Wall time elapsed: 1ms
+2: CPU time sm build: 0ms
+2: CPU time sm calc: 0ms
+2: Waiting for matrix properties...
+0: Wall time elapsed for Gatherv: 45ms
+3: Waiting for matrix properties...
+0: Wall time elapsed for Bcast: 0ms
+1: ... received
+1: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+3: ... received
+3: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+1: Wall time elapsed: 1ms
+1: CPU time sm build: 0ms
+1: CPU time sm calc: 0ms
+1: Waiting for matrix properties...
+4: ... received
+4: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+3: Wall time elapsed: 12ms
+3: CPU time sm build: 0ms
+3: CPU time sm calc: 0ms
+4: Wall time elapsed: 1ms
+4: CPU time sm build: 0ms
+4: CPU time sm calc: 0ms
+4: Waiting for matrix properties...
+2: ... received
+2: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+2: Wall time elapsed: 1ms
+2: CPU time sm build: 0ms
+2: CPU time sm calc: 0ms
+2: Waiting for matrix properties...
+0: Wall time elapsed for Gatherv: 63ms
+3: Waiting for matrix properties...
+0: Wall time elapsed for Bcast: 0ms
+3: ... received
+3: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+4: ... received
+4: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+1: ... received
+1: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+1: Wall time elapsed: 0ms
+1: CPU time sm build: 0ms
+1: CPU time sm calc: 0ms
+1: Waiting for matrix properties...
+4: Wall time elapsed: 29ms
+4: CPU time sm build: 0ms
+4: CPU time sm calc: 0ms
+4: Waiting for matrix properties...
+2: ... received
+2: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+2: Wall time elapsed: 0ms
+2: CPU time sm build: 0ms
+2: CPU time sm calc: 0ms
+2: Waiting for matrix properties...
+0: Wall time elapsed for Gatherv: 53ms
+3: Wall time elapsed: 53ms
+3: CPU time sm build: 0ms
+3: CPU time sm calc: 0ms
+3: Waiting for matrix properties...
+3: ... received
+0: Wall time elapsed for Bcast: 0ms
+3: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+3: Wall time elapsed: 4ms
+3: CPU time sm build: 0ms
+3: CPU time sm calc: 0ms
+1: ... received
+1: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+1: Wall time elapsed: 1ms
+1: CPU time sm build: 0ms
+1: CPU time sm calc: 0ms
+1: Waiting for matrix properties...
+4: ... received
+4: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+4: Wall time elapsed: 1ms
+4: CPU time sm build: 0ms
+4: CPU time sm calc: 0ms
+4: Waiting for matrix properties...
+2: ... received
+2: We have 40 thread(s) to solve 250 submatrices. Give 1 thread(s) to MKL for each submatrix operation.
+2: Wall time elapsed: 1ms
+2: CPU time sm build: 0ms
+2: CPU time sm calc: 0ms
+2: Waiting for matrix properties...
+0: Wall time elapsed for Gatherv: 41ms
+3: Waiting for matrix properties...
+2: ... received
+2: Received signal to halt.
+3: ... received
+3: Received signal to halt.
+1: ... received
+1: Received signal to halt.
+4: ... received
+4: Received signal to halt.

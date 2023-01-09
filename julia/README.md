@@ -2,6 +2,14 @@
 
 The file `matrix_io.jl` contains functions to read / write sparse matrices (`SparseMatrixCSC`) from / to disk in a format that is compatible with the applications `mkl-matrix-inv` and `mpi-matrix-inv` in the parent directory. In also defines `sprandsymposdef` (a rough analogon of MATLABs same-named function)
 
+## Environment / Modules
+
+In the root of the repo lies a file `.envrc`. If you have [direnv](https://direnv.net/) this is automatically picked up and the relevant modules are loaded. If not, simply execute `source .envrc` before you're doing anything else.
+
+## Building
+
+Go to the root of the repo and execute `make`. That's it.
+
 ## Usage: `mkl-matrix-inv`
 
 Performs a standard matrix inversion using (multithreaded) Intel MKL. No MPI parallelism. Expects input matrix to be in `.txt` form (use `write_matrix_txt` to create it).

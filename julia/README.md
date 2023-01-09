@@ -2,7 +2,7 @@
 
 The file `matrix_io.jl` contains functions to read / write sparse matrices (`SparseMatrixCSC`) from / to disk in a format that is compatible with the applications `mkl-matrix-inv` and `mpi-matrix-inv` in the parent directory. In also defines `sprandsymposdef` (a rough analogon of MATLABs same-named function)
 
-## Environment / Modules
+## Environment / Modules on Noctua 1
 
 In the root of the repo lies a file `.envrc`. If you have [direnv](https://direnv.net/) this is automatically picked up and the relevant modules are loaded. If not, simply execute `source .envrc` before you're doing anything else.
 
